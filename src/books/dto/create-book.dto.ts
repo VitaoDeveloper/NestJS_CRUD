@@ -1,5 +1,5 @@
-import { IsString, MinLength, MaxLength,
-         IsOptional } from 'class-validator';
+import { IsString, MinLength, MaxLength, IsOptional, IsUUID } from 'class-validator';
+import type { UUID } from 'crypto';
 
 export class CreateBookDto {
   @IsString()
@@ -8,7 +8,6 @@ export class CreateBookDto {
   name: string;
 
   @IsOptional()
-  @IsString()
-  @MaxLength(80)
-  genre?: string; // nome do gênero, não o id
+  @IsUUID()
+  genreId?: UUID;
 }

@@ -16,13 +16,14 @@ export class BooksService {
   ) {}
 
   async create(dto: CreateBookDto) {
-    // valida se o gênero existe antes de criar
-    if (dto.genre) {
-      const exists = await this.genresService.findByName(dto.genre);
-      if (!exists)
-        throw new BadRequestException(`Gênero "${dto.genre}" não existe`);
+    if (dto.genreId === null)
+      throw new BadRequestException('genreId não pode ser nulo');
+
+    const book = this.repo.create({ name: dto.name });
+    if (dto.genreId) {
+      const genre = await this.genresService.findOne(dto.genreId);
+      book.genreRelation = genre;
     }
-    const book = this.repo.create(dto);
     return this.repo.save(book);
   }
 
@@ -41,12 +42,15 @@ export class BooksService {
 
   async update(id: UUID, dto: UpdateBookDto) {
     const book = await this.findOne(id);
-    if (dto.genre) {
-      const exists = await this.genresService.findByName(dto.genre);
-      if (!exists)
-        throw new BadRequestException(`Gênero "${dto.genre}" não existe`);
-    } 
-    Object.assign(book, dto);
+
+    if (dto.genreId === null)
+      throw new BadRequestException('genreId não pode ser nulo');
+
+    if (dto.name !== undefined) book.name = dto.name;
+    if (dto.genreId !== undefined) {
+      const genre = await this.genresService.findOne(dto.genreId);
+      book.genreRelation = genre;
+    }
     return this.repo.save(book);
   }
 
