@@ -11,7 +11,6 @@ import 'dotenv/config';
     TypeOrmModule.forRoot({
       type: 'postgres',
       url: process.env.DATABASE_URL,
-      database: 'library',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
     }),
     GenresModule, BooksModule
