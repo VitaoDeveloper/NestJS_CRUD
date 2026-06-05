@@ -4,15 +4,13 @@ import { AppService } from './app.service';
 import { GenresModule } from './genres/genres.module';
 import { BooksModule } from './books/books.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import 'dotenv/config';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'postgres',
+      url: process.env.DATABASE_URL,
       database: 'library',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
     }),
