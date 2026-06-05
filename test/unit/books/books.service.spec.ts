@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { BooksService } from './books.service';
+import { BooksService } from 'src/books/books.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { Book } from './entities/book.entity';
-import { GenresService } from '../genres/genres.service';
+import { Book } from 'src/books/entities/book.entity';
+import { GenresService } from 'src/genres/genres.service';
 import { BadRequestException, NotFoundException } from '@nestjs/common';
 import type { UUID } from 'crypto';
 

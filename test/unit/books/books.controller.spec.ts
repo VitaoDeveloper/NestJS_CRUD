@@ -1,7 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { BooksController } from './books.controller';
-import { BooksService } from './books.service';
-import type { UUID } from 'crypto';
+import { BooksController } from 'src/books/books.controller';
+import { BooksService } from 'src/books/books.service';
 
 const mockBookId = '550e8400-e29b-41d4-a716-446655440000' as const;
 const mockGenreId = '660e8400-e29b-41d4-a716-446655440001' as const;

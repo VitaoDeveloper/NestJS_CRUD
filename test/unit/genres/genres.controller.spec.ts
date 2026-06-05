@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { GenresController } from './genres.controller';
-import { GenresService } from './genres.service';
+import { GenresController } from 'src/genres/genres.controller';
+import { GenresService } from 'src/genres/genres.service';
 
 const mockGenreId = '660e8400-e29b-41d4-a716-446655440001' as const;
 

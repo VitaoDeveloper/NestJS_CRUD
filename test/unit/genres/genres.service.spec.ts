@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { GenresService } from './genres.service';
+import { GenresService } from 'src/genres/genres.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { Genre } from './entities/genre.entity';
+import { Genre } from 'src/genres/entities/genre.entity';
 import { NotFoundException } from '@nestjs/common';
 import type { UUID } from 'crypto';
 
